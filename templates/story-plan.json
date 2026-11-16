@@ -1,0 +1,11 @@
+{
+  "title": "Example story",
+  "target_duration_seconds": 60,
+  "aspect_ratio": "16:9",
+  "narration_languages": ["zh-CN", "en"],
+  "subtitle_languages": ["zh-CN", "en"],
+  "scenes": [
+    {"id": "01", "start_seconds": 0, "duration_seconds": 30, "image": "assets/01.jpg", "video": "clips/01.mp4", "narration": {"zh-CN": "小熊看见一颗星星。", "en": "A little bear sees a star."}},
+    {"id": "02", "start_seconds": 30, "duration_seconds": 30, "image": "assets/02.jpg", "video": "clips/02.mp4", "narration": {"zh-CN": "朋友们一起回家。", "en": "The friends go home together."}}
+  ]
+}
