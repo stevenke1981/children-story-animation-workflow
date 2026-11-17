@@ -28,6 +28,17 @@ When exploring camera movement, one tested setup uses three character assets plu
 
 For this children's-story workflow, the user chose in-clip shot changes as the preferred production method. In Flow's Video → Ingredients mode, provide the selected character and location references, then describe the visible wide shot and a motivated cut to a named character's close-up within one generation prompt. Keep production IDs in the local ledger, preserve the selected model and current ingredient limits, and check the output's actual shot change, action, character appearance and continuity before assembling the film. One observed 8-second Omni 1.1 Flash test produced a wide shot followed by a hard cut to the bear at about 4.46 seconds; this is evidence for that take, not a guarantee for other prompts or models. A hard cut is not a continuous camera push-in.
 
+### Camera direction for young children
+
+Choose camera movement for the story beat and keep the subject and direction easy to follow:
+
+- **Reveal:** use a gentle forward or sideways move past a foreground tree, doorway, toy or similar object to reveal the character or place behind it. Layer the foreground, subject and background when the scene benefits from depth.
+- **Lateral tracking:** move alongside walking, dancing or traveling characters, maintaining a clear screen direction and readable view of the action.
+- **Quick push for comedy:** use a brief, sparing fast move toward a character's reaction when it supports a simple visual joke. Let the expression settle with blinking or other small animated movement; do not insert a frozen still when the brief requires an entirely moving film.
+- **Motivated gentle push:** move slowly toward a character or object at an emotional or story turning point, so a young viewer can identify what to watch.
+
+Favor stable, legible compositions and use foreground detail when it fits the location; do not add magical effects merely to create parallax. Reserve strong dolly-zoom distortion and fast orbital movement for exceptional, clearly motivated moments, and review the actual footage for abruptness. These are creative guidelines, not guarantees of comfort or measured effects on every child. Describe the specific movement and actor blocking in the prompt, and check that the generated clip actually performs it; a hard cut, digital crop and physical camera move are different results.
+
 When separately requested to lengthen an existing clip around a character, a local edit can replace a selected moving interval with a slowed, progressively cropped version, then rejoin the following source interval. Retain the source, synchronize the corresponding audio, and verify output duration and cut boundaries. Digital cropping can soften the image and cannot create authentic camera parallax; slowed video or audio may need further quality review. Document whether the result was added to a Flow timeline or only edited locally.
 
 ## 3. Narration and subtitles
