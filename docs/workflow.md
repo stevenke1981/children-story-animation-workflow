@@ -18,6 +18,10 @@ For a continuous sequence, assign each shot its own consecutive frame pair: F00â
 
 Keep shot identifiers, bookkeeping and references to production steps in the local shot ledger, not in the generation prompt when the user requests clean prompts. Describe observable action, the characters and their positions, relevant objects, lighting and camera. The [Seedance 2.0 skill project](https://github.com/Emily2040/seedance-2.0) provides directing principles that can inform this writing, but it targets Seedance: adapt general craft to Flow/Veo rather than treating model-specific syntax or capabilities as interchangeable.
 
+### Flow character and scene reference test
+
+Flow's Create character interface can save reusable named character assets. Its New scene interface creates a video timeline; a location reference can instead be made as an image and added with character assets in Video â†’ Ingredients. In one observed session, four character assets were created and a fourth simultaneous character ingredient appeared disabled, so two shots used three characters each plus one shared background; the exact cause and any platform-wide limit were not established. Two Omni 1.1 Flash shots at 720p and 10 seconds displayed a cost of 15 credits each. Availability and price may change. The shared references kept the setting recognizable but did not preserve the ending pose or character arrangement across the cut; inspect this explicitly when continuity matters. A scene timeline was created and one of the tested clips was added.
+
 ## 3. Narration and subtitles
 
 For HeyGen voice, send Simplified Chinese text to `heygen/heygen-voice-1-turbo:free`; keep the subtitle text separately in the requested script. Generate English narration separately when requested. Check current live zero pricing and use only the exact free route unless the user has explicitly approved a specific paid model, price and cost ceiling. Check API identity independently of browser sessions. Generate one WAV per scene, check the actual files and durations, and preserve source text.
