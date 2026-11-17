@@ -16,6 +16,8 @@ Short variations derived from the same frame do not automatically form a continu
 
 For a continuous sequence, assign each shot its own consecutive frame pair: F00→F01, F01→F02, and so on. Reuse each exact ending image as the following shot's starting image, and create each next frame from the preceding reference while checking characters, props and composition. Forty shots need 41 boundary images; if the brief requests 42, document the extra image's specific transition or replacement role. Produce and inspect a short sample first when requested. Compare the actual adjacent clip endpoints as well as checking motion inside each clip; shared references do not by themselves guarantee seamless video.
 
+Keep shot identifiers, bookkeeping and references to production steps in the local shot ledger, not in the generation prompt when the user requests clean prompts. Describe observable action, the characters and their positions, relevant objects, lighting and camera. The [Seedance 2.0 skill project](https://github.com/Emily2040/seedance-2.0) provides directing principles that can inform this writing, but it targets Seedance: adapt general craft to Flow/Veo rather than treating model-specific syntax or capabilities as interchangeable.
+
 ## 3. Narration and subtitles
 
 For HeyGen voice, send Simplified Chinese text to `heygen/heygen-voice-1-turbo:free`; keep the subtitle text separately in the requested script. Generate English narration separately when requested. Check current live zero pricing and use only the exact free route unless the user has explicitly approved a specific paid model, price and cost ceiling. Check API identity independently of browser sessions. Generate one WAV per scene, check the actual files and durations, and preserve source text.
