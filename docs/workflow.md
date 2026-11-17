@@ -24,6 +24,10 @@ Flow's Create character interface can save reusable named character assets. Its 
 
 When exploring camera movement, one tested setup uses three character assets plus one location image per shot. To explore a location from four directions, first verify that any generated panorama is genuinely suitable for 360-degree projection; if it is an ordinary wide image, use it as a shared layout reference and label AI-generated viewpoints as approximate rather than claiming an exact split. Specify observable character paths and one motivated camera movement for each shot. Save the actual prompts, references and outputs, then inspect several frames and, where possible, play the video: distinct still frames and freeze detection do not prove that the model followed the requested camera path or that independent clips cut seamlessly.
 
+### Shot changes and local push-ins
+
+To test a camera change inside a single generated clip, describe a readable wide shot followed by a cut to a specific character's close-up, then check the actual result and distinguish a hard cut from a continuous camera move. To lengthen an existing clip around a character, a local edit can replace a selected moving interval with a slowed, progressively cropped version, then rejoin the following source interval. Retain the source, synchronize the corresponding audio, and verify output duration and cut boundaries. Digital cropping can soften the image and cannot create authentic camera parallax; slowed video or audio may need further quality review. Document whether the result was added to a Flow timeline or only edited locally.
+
 ## 3. Narration and subtitles
 
 For HeyGen voice, send Simplified Chinese text to `heygen/heygen-voice-1-turbo:free`; keep the subtitle text separately in the requested script. Generate English narration separately when requested. Check current live zero pricing and use only the exact free route unless the user has explicitly approved a specific paid model, price and cost ceiling. Check API identity independently of browser sessions. Generate one WAV per scene, check the actual files and durations, and preserve source text.
