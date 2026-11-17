@@ -2,7 +2,7 @@
 
 ## 1. Creative brief and identity
 
-Agree on age range, language, duration, delivery format and content. Make a scene plan with cumulative timing and concise narration. For five minutes, ten roughly 30-second scenes are a useful starting point, not a substitute for timing the completed audio. Keep character designs and names consistent.
+Agree on age range, language, duration, delivery format and content. For preschoolers, favor familiar actions, clear cause and effect and everyday settings when requested. Make a scene plan with cumulative timing and concise narration. For five minutes, ten roughly 30-second scenes are a useful starting point, not a substitute for timing the completed audio. Keep character designs and names consistent.
 
 Identify the requested service, active login, project and any account-specific restrictions on the actual surface used. A browser login does not verify an API key. Do not treat an example email, avatar or past session as proof of account ownership. Keep credentials and account mappings private. If an explicitly required account cannot be verified, stop the dependent write and ask the user.
 
@@ -10,9 +10,9 @@ Identify the requested service, active login, project and any account-specific r
 
 Create a dedicated project when appropriate. Generate a character reference and environment reference, then numbered 16:9 storyboard stills, referencing the character sheet where supported. Download and visually inspect all stills; record observed inconsistencies instead of claiming identity is perfect.
 
-For each scene select the correct image as the first frame through Flow’s supported interface. Check model, duration, resolution, output count, per-generation credit cost and balance from the current UI before submitting. A historical example used Veo 3.1 Lite, 720p, 8 seconds, four outputs for 40 credits, but current prices and availability must be rechecked. Save project URL, scene number, prompt, settings and job status in a private ledger. Submit each intended job once; inspect the original project if outcome is uncertain. Never retry a provider policy refusal by changing accounts or disguising the same request. Preserve a rejected shot as a reported gap.
+For each shot, prepare a start frame and a compatible end frame showing the intended action's result. Select both in Flow's Frames mode through its supported interface when requested, and verify both appear before submitting. Existing clips made with a start frame alone may be reused only when the user authorizes them and they pass review. Check model, duration, resolution, output count, per-generation credit cost and balance from the current UI before submitting. A historical example used Veo 3.1 Lite, 720p, 8 seconds, four outputs for 40 credits, but current prices and availability must be rechecked. Save project URL, scene number, prompt, settings and job status in a private ledger. Submit each intended job once; inspect the original project if outcome is uncertain. Never retry a provider policy refusal by changing accounts or disguising the same request. Preserve a rejected shot as a reported gap.
 
-Short variations derived from the same frame do not automatically form a continuous scene. Inspect actual clips for motion, continuity and transitions. Use only material the user has authorized. Upload through the supported file chooser. If Chrome requests extension access to file URLs, have the user enable it; do not bypass the restriction.
+Short variations derived from the same frame do not automatically form a continuous scene. Inspect actual clips for motion, continuity and transitions. When the user requires fully animated footage, storyboard stills are generation references only: do not replace a missing clip with a still, a pan or zoom over a still, or a held frame. Flag unusually still intervals for review; automated freeze detection alone does not establish creative quality. Use only material the user has authorized. Upload through the supported file chooser. If Chrome requests extension access to file URLs, have the user enable it; do not bypass the restriction.
 
 ## 3. Narration and subtitles
 
