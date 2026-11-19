@@ -49,7 +49,21 @@ The default reference-based workflow uses Veo 3.1 Lite at 720p in Ingredients mo
 
 For existing 360p material or a task that explicitly uses 360p, download and inspect each clip, then immediately upscale approved shots one at a time. If a 720p upscale displays a long-running message without a download, reload the same Flow page and verify the account, project, clip, download and whether an upscale is still pending. Download the existing 720p result if available. If there is still no result and the page shows no active upscale, retry once and record the outcome. Upscale one clip at a time. Verify the downloaded resolution and duration. The user reported that refreshing and retrying resolved one occurrence; the underlying cause was not established.
 
-If Flow reports “Unusual activity detected” (「偵測到異常活動」), reload the same `flow.google.com` tab before clicking Retry or submitting any other item. Wait for the interface to load, then verify the original account, project and job status. Resubmit the same item only when its previous attempt is confirmed failed and no attempt for that item is pending or has succeeded. This recovery applies to the unusual-activity error. Treat an explicit content policy refusal as a rejected shot.
+If Flow reports “Unusual activity detected” (「偵測到異常活動」), reload the same `flow.google.com` tab before clicking Retry or submitting any other item. Wait for the interface to load, then verify the original account, project and job status. Resubmit the same item only when its previous attempt is confirmed failed and no attempt for that item is pending or has succeeded. This recovery applies to the unusual-activity error. Treat an explicit content policy refusal as a rejected shot. If the error keeps recurring, stop and record it. Do not switch to another automation method that the site is less likely to detect: that is evading its protection. Continue by hand, or prepare the storyboards with another approved image tool and upload them.
+
+#### Prompt rules for dialogue, props and motion
+
+Learned from reviewing a finished episode and a 23-shot follow-up:
+
+- **Bind each speaker to their appearance.** Write "the small white bunny with the green mail bag says…", not just a name the model cannot see. Add "While one character speaks, every other character keeps their mouth closed." Do not describe characters as speaking "together" unless each has a line. Keep the speaker visible during their line; do not place dialogue in a prop close-up.
+- **State empty containers positively.** For example, "The wooden wagon bed is completely empty." Check every reference image before submitting: a prop in the reference image tends to reappear in the clip.
+- **Take character descriptions from the project's own character sheet**, not from an external analysis, which may describe the design incorrectly.
+- **One main action per beat.** Use a static camera when the action is complex, and start characters in their final position instead of having them climb or cross objects inside one clip.
+- Expect the native clip length and dialogue timing to drift from the request (one 8-second request returned 190 frames, about 7.92 s, with its lines early). Pad in the edit and time the subtitles to the actual audio.
+
+#### Several agents on one episode
+
+Keep one shared handoff file and one running report per episode. Only one agent submits jobs to a Flow project at a time. Never resubmit an item another agent has submitted whose outcome is still unknown. Write prompt revisions to a new versioned file with a before/after list, rather than editing a file another agent is running from.
 
 Short variations derived from the same frame do not automatically form a continuous scene. Inspect actual clips for motion, continuity and transitions. Use Luna Decisions MCP to help compare sampled video frames, including frames viewed in Flow when appropriate, with their original storyboard images; then make an independent visual judgment and record observed differences and unrun checks. When the user requires fully animated footage, storyboard stills are generation references only: do not replace a missing clip with a still, a pan or zoom over a still, or a held frame. Flag unusually still intervals for review; automated freeze detection alone does not establish creative quality. Use only material the user has authorized. Upload through the supported file chooser. If Chrome requests extension access to file URLs, have the user enable it; do not bypass the restriction.
 
