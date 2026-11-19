@@ -94,6 +94,19 @@ Favor stable, legible compositions and use foreground detail when it fits the lo
 
 When separately requested to lengthen an existing clip around a character, a local edit can replace a selected moving interval with a slowed, progressively cropped version, then rejoin the following source interval. Retain the source, synchronize the corresponding audio, and verify output duration and cut boundaries. Digital cropping can soften the image and cannot create authentic camera parallax; slowed video or audio may need further quality review. Document whether the result was added to a Flow timeline or only edited locally.
 
+### Single source of truth, gates and rescue edits
+
+Keep one machine-readable storyboard file per episode (for example `02_storyboard.json`) as the only place where shot status lives: `draft → pending_frame → frame_review → approved | approved_with_fix → pending_video → video_review → locked`, plus `split_required`. Notes elsewhere are not status.
+
+- **Gate 1 (script):** put a risk table at the top of the script — new props or characters (at most two per episode), high-risk actions and their safer replacements, longest line (at most ten English words for preschool dialogue), one speaker per generated clip, object state changes, catchphrase count, closing hook. The user signs it off before storyboards.
+- **Gate 2 (spec):** a validator script, not a prompt reminder, rejects banned prompt words (for example "together", "in unison"), more than one speaker per clip, missing identity keywords for on-screen characters, wrong clip durations and status/file mismatches.
+- **Gate 3 (keyframes):** a contact sheet of every keyframe with a border colour from the visual check score (green at least 0.85, yellow 0.60–0.85, red below 0.60) and the subtitle safe zone marked; the user answers in one batch (`03 B2: flip | redo: reason | ok`).
+- **Visual checks** (for example Luna decisions) judge one visible fact per condition — counts, identity, props, distortion. They do not judge lip-sync or voices; listen for those.
+- **Rescue order:** cut first (trim in/out), then cover (zoom-crop 15–20 %, a transparent sticker overlay with a sound effect, a horizontal flip, 0.85× speed, replaced audio), and regenerate last. After the third failed generation of the same shot, split it into two shots instead of trying again.
+- Express edits as data in the storyboard (in/out, speed, zoom_crop, flip, grade, replace_audio, overlays) and render with one ffmpeg build script, so a rebuild is repeatable.
+- Generated title text in non-Latin scripts is error-prone: ask the image model for a blank frame and render the text with a script and a licensed font.
+- Submission to a generation service stays one item at a time from a generated paste list; when the service reports unusual activity, stop rather than switching automation methods.
+
 ## 3. Narration and subtitles
 
 For HeyGen voice, send Simplified Chinese text to `heygen/heygen-voice-1-turbo:free`; keep the subtitle text separately in the requested script. Generate English narration separately when requested. Check current live zero pricing and use only the exact free route unless the user has explicitly approved a specific paid model, price and cost ceiling. Check API identity independently of browser sessions. Generate one WAV per scene, check the actual files and durations, and preserve source text.
