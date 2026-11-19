@@ -10,11 +10,46 @@ Identify the requested service, active login, project and any account-specific r
 
 Create a dedicated project when appropriate. Generate a character reference and environment reference, then numbered 16:9 storyboard stills, referencing the character sheet where supported. Download and visually inspect all stills; record observed inconsistencies instead of claiming identity is perfect.
 
-For each shot, prepare a start frame and a compatible end frame showing the intended action's result. Select both in Flow's Frames mode through its supported interface when requested, and verify both appear before submitting. Existing clips made with a start frame alone may be reused only when the user authorizes them and they pass review. Check model, duration, resolution, output count, per-generation credit cost and balance from the current UI before submitting. A historical example used Veo 3.1 Lite, 720p, 8 seconds, four outputs for 40 credits, but current prices and availability must be rechecked. Save project URL, scene number, prompt, settings and job status in a private ledger. Submit each intended job once; inspect the original project if outcome is uncertain. Never retry a provider policy refusal by changing accounts or disguising the same request. Preserve a rejected shot as a reported gap.
+### Codex image generation
+
+1. Choose Flow or the built-in Codex `image_gen` tool for character and storyboard art. In Codex, create a character sheet if one is needed and approve it visually before using it as the fixed identity reference. Reuse the approved version for later shots.
+2. Make one `image_gen` call per requested storyboard image. Use the shot's approved first board (B1), when available, for composition, and the approved character sheet for identity. Inspect local inputs with `view_image` and attach them by path. State what must stay fixed, the intended pose or action, the props and their counts, the camera framing, and the 16:9 target.
+3. Copy the selected output to the production folder under a versioned name such as `shot-07-B3-v02.png`. Keep earlier versions and record the chosen asset, prompt and reference paths in the private shot ledger. Check character identity and count, props and their counts, the depicted action, style and actual aspect ratio. Compare adjacent approved boards for continuity.
+
+### Optional Luna visual review
+
+Use the configured OpenAI Decisions route with `gpt-6-luna` to supplement visual inspection. Check the user-approved per-episode budget before a request and record the returned usage in the private production ledger. Send only the candidate image and concrete checks needed for that image. Include expected features and check separately for forbidden features. The existing `decisions.check_conditions` accepts an image data URL and returns a predicate probability for each condition. For example, run this PowerShell command from the Luna Decisions client's directory with its configured Python environment and an authorized Decisions connection. Replace the candidate path with a local PNG. [OpenAI Decisions guide](https://developers.openai.com/api/docs/guides/decisions)
+
+```powershell
+@'
+from base64 import b64encode
+from pathlib import Path
+import sys
+
+from decisions import check_conditions
+
+candidate = Path(sys.argv[1]).read_bytes()
+image = 'data:image/png;base64,' + b64encode(candidate).decode('ascii')
+print(check_conditions([
+    'Exactly one white rabbit is visible.',
+    'A red gift box is visible inside the wagon.',
+], image, context='Inspect this candidate storyboard still.'))
+'@ | .\.venv\Scripts\python.exe -B - 'C:\production\shot-07-B3-v02.png'
+```
+
+Look for evidence that required features are present and forbidden ones are absent. Treat the probabilities as supporting evidence and have a person or Codex inspect the image and adjacent boards. Mark missing, refused or inconclusive checks for review. Record `NOT_RUN` when Luna was skipped and identify who performed the visual review.
+
+### Animated clips in Flow
+
+Use approved storyboard stills as input frames or ingredients for the selected video mode. Use animated clips in the edit.
+
+For projects that require the Flow Agent, select **Agent** in the main project prompt box before preparing a video. Verify it is selected again after reloading. Set the required default model, orientation, and output count in Agent settings. Inspect the actual proposed generation and its credit cost at Flow's confirmation before starting the job. [Flow Agent help](https://support.google.com/flow/answer/17093911?hl=en)
+
+The standard reference-based workflow uses Omni Flash 1.2, 360p and four relevant reference images, followed by a verified 720p upscale; a specific user instruction overrides this default. If a start/end-frame workflow is explicitly requested, prepare and select a compatible pair in Frames mode. Check model, reference count, duration, resolution, output count, per-generation credit cost and balance from the current UI before submitting. Save project URL, scene number, prompt, settings and job status in a private ledger. Submit each intended job once; inspect the original project if outcome is uncertain. Never retry a provider policy refusal by changing accounts or disguising the same request. Preserve a rejected shot as a reported gap.
 
 If Flow reports “Unusual activity detected” (「偵測到異常活動」), reload the same `flow.google.com` tab before clicking Retry or submitting any other item. Wait for the interface to load, then verify the original account, project and job status. Resubmit the same item only when its previous attempt is confirmed failed and no attempt for that item is pending or has succeeded. This recovery applies to the unusual-activity error. Treat an explicit content policy refusal as a rejected shot.
 
-Short variations derived from the same frame do not automatically form a continuous scene. Inspect actual clips for motion, continuity and transitions. When the user requires fully animated footage, storyboard stills are generation references only: do not replace a missing clip with a still, a pan or zoom over a still, or a held frame. Flag unusually still intervals for review; automated freeze detection alone does not establish creative quality. Use only material the user has authorized. Upload through the supported file chooser. If Chrome requests extension access to file URLs, have the user enable it; do not bypass the restriction.
+Short variations derived from the same frame do not automatically form a continuous scene. Inspect actual clips for motion, continuity and transitions. Use Luna Decisions MCP to help compare sampled video frames, including frames viewed in Flow when appropriate, with their original storyboard images; then make an independent visual judgment and record observed differences and unrun checks. When the user requires fully animated footage, storyboard stills are generation references only: do not replace a missing clip with a still, a pan or zoom over a still, or a held frame. Flag unusually still intervals for review; automated freeze detection alone does not establish creative quality. Use only material the user has authorized. Upload through the supported file chooser. If Chrome requests extension access to file URLs, have the user enable it; do not bypass the restriction.
 
 When the user chooses a start/end-frame workflow, assign each shot its own consecutive frame pair: F00→F01, F01→F02, and so on. Reuse each exact ending image as the following shot's starting image, and create each next frame from the preceding reference while checking characters, props and composition. Forty shots need 41 boundary images; if the brief requests 42, document the extra image's specific transition or replacement role. Produce and inspect a short sample first when requested. Compare the actual adjacent clip endpoints as well as checking motion inside each clip; shared references do not by themselves guarantee seamless video.
 
@@ -47,7 +82,7 @@ When separately requested to lengthen an existing clip around a character, a loc
 
 For HeyGen voice, send Simplified Chinese text to `heygen/heygen-voice-1-turbo:free`; keep the subtitle text separately in the requested script. Generate English narration separately when requested. Check current live zero pricing and use only the exact free route unless the user has explicitly approved a specific paid model, price and cost ceiling. Check API identity independently of browser sessions. Generate one WAV per scene, check the actual files and durations, and preserve source text.
 
-If requested, use `gpt-transcribe-mcp` to compare actual audio against the source. It sends recordings to OpenAI and may incur a charge: disclose the model, rate, estimate and ceiling, obtain payer approval, and stay within it. The tool supplies a transcript, not word timing or a guarantee of pronunciation. Actual listening or transcription not performed must be reported as NOT_RUN.
+Use `gpt-transcribe-mcp` as the primary speech-to-text tool for subtitle transcripts, selecting the actual audio language and comparing the result with the script. It sends recordings to OpenAI and incurs API charges: disclose the model, rate, estimate and ceiling, obtain payer approval, and stay within it. The tool supplies a transcript, not word timing or a guarantee of pronunciation; align subtitles to the actual audio separately. Actual listening or transcription not performed must be reported as NOT_RUN.
 
 Prepare Simplified Chinese + English subtitles when requested. Translate meaningfully and time them against the actual voice recording; do not claim proportional timing is audio alignment. Use a readable CJK font with a verifiable license, for example [Iansui](https://github.com/ButTaiwan/iansui), preserving its OFL license. The final picture must remain readable on small screens.
 
